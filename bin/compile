@@ -2,10 +2,15 @@
 set -eu
 
 cd $(dirname "$0")
+BUILD_DIR=$1
+VENDOR_DIR="vendor"
 
-mkdir -p /app/vendor
-cp vw /app/vendor
+mkdir -p "$BUILD_DIR/$VENDOR_DIR/vowpal_wabbit"
+cp vw "$BUILD_DIR/$VENDOR_DIR/vowpal_wabbit"
 
-alias vw=/app/vendor/vw
+# Export PATH
+PROFILE_PATH="$BUILD_DIR/.profile.d/vw.sh"
+mkdir -p $(dirname $PROFILE_PATH)
+echo 'export PATH="$PATH:${HOME}/vendor/vowpal_wabbit"' >> $PROFILE_PATH
 
-echo "Adding Vowpal Wabbit version $(vw --version)"
+echo "-----> Adding Vowpal Wabbit version $(vw --version)"
