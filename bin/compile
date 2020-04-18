@@ -3,6 +3,9 @@ set -eu
 
 cd $(dirname "$0")
 
-cp vw /usr/local/bin
+mkdir -p /app/vendor
+cp vw /app/vendor
+
+alias vw=/app/vendor/vw
 
 echo "Adding Vowpal Wabbit version $(vw --version)"
