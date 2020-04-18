@@ -1,0 +1,8 @@
+#!/bin/sh
+set -euo pipefail
+
+cd $(dirname "$0")
+
+cp vw /usr/local/bin
+
+echo "Adding Vowpal Wabbit version $(vw --version)"
